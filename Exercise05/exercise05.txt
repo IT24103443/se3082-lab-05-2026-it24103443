@@ -1,0 +1,4 @@
+mithejamanoharie@Mithejas-MacBook-Air Exercise05 % ./ex5
+fib(30) = 832040
+
+
