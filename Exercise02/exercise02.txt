@@ -1,0 +1,29 @@
+mithejamanoharie@192 Exercise02 % ./ex2
+thread # 4
+thread # 7
+thread # 8
+thread # 1
+thread # 5
+thread # 9
+thread # 3
+thread # 6
+thread # 0
+thread # 2
+Inside Single # 4
+Exiting Single 
+Hi again from thread # 8
+Hi again from thread # 0
+Hi again from thread # 9
+Hi again from thread # 5
+Hi again from thread # 4
+Hi again from thread # 7
+Hi again from thread # 2
+Hi again from thread # 6
+Hi again from thread # 3
+Hi again from thread # 1
+
+// #pragma omp single: exactly one thread (whichever arrives first. Not necessarily thread 0) executes this block. 
+The others skip it. Critically, there's an implicit barrier at the end. 
+The other threads wait there until the single thread finishes. 
+That's why the Hi again lines all come after.
+
