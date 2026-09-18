@@ -1,0 +1,33 @@
+//#pragma omp parallel for private(j, iter, ztemp, z, c) reduction(+:numoutside)
+mithejamanoharie@Mithejas-MacBook-Air Exercise07 % for t in 1 2 3 4; do OMP_NUM_THREADS=$t ./ex7; done
+Area of Mandlebrot set =   1.50926625 +/-   0.00075463
+numoutside = 2926744
+Threads = 1, Time = 3931.303 ms
+Area of Mandlebrot set =   1.50926625 +/-   0.00075463
+numoutside = 2926744
+Threads = 2, Time = 3337.314 ms
+Area of Mandlebrot set =   1.50926625 +/-   0.00075463
+numoutside = 2926744
+Threads = 3, Time = 2347.602 ms
+Area of Mandlebrot set =   1.50926625 +/-   0.00075463
+numoutside = 2926744
+Threads = 4, Time = 1854.379 ms
+
+
+//Extra exercise
+//#pragma omp parallel for private(j, iter, ztemp, z, c) \
+        reduction(+:numoutside) schedule(dynamic, 10)
+mithejamanoharie@Mithejas-MacBook-Air Exercise07 % for t in 1 2 3 4; do OMP_NUM_THREADS=$t ./ex7; done   
+Area of Mandlebrot set =   1.50926625 +/-   0.00075463
+numoutside = 2926744
+Threads = 1, Time = 3905.904 ms
+Area of Mandlebrot set =   1.50926625 +/-   0.00075463
+numoutside = 2926744
+Threads = 2, Time = 1975.271 ms
+Area of Mandlebrot set =   1.50926625 +/-   0.00075463
+numoutside = 2926744
+Threads = 3, Time = 1474.124 ms
+Area of Mandlebrot set =   1.50926625 +/-   0.00075463
+numoutside = 2926744
+Threads = 4, Time = 1100.127 ms
+mithejamanoharie@Mithejas-MacBook-Air Exercise07 %
