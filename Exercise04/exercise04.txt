@@ -1,0 +1,116 @@
+//1
+mithejamanoharie@192 Exercise04 % ./ex4
+r = 5, k = 1, thread # = 4
+r = 5, k = 2, thread # = 4
+r = 5, k = 3, thread # = 4
+r = 1, k = 1, thread # = 0
+r = 1, k = 2, thread # = 0
+r = 3, k = 1, thread # = 2
+r = 3, k = 2, thread # = 2
+r = 3, k = 3, thread # = 2
+r = 3, k = 4, thread # = 2
+r = 3, k = 5, thread # = 2
+r = 3, k = 6, thread # = 2
+r = 3, k = 7, thread # = 2
+r = 3, k = 8, thread # = 2
+r = 3, k = 9, thread # = 2
+r = 3, k = 10, thread # = 2
+r = 5, k = 4, thread # = 4
+r = 5, k = 5, thread # = 4
+r = 1, k = 3, thread # = 0
+r = 1, k = 4, thread # = 0
+r = 1, k = 5, thread # = 0
+r = 1, k = 6, thread # = 0
+r = 1, k = 7, thread # = 0
+r = 1, k = 8, thread # = 0
+r = 1, k = 9, thread # = 0
+r = 1, k = 10, thread # = 0
+r = 4, k = 1, thread # = 3
+r = 4, k = 2, thread # = 3
+r = 4, k = 3, thread # = 3
+r = 4, k = 4, thread # = 3
+r = 4, k = 5, thread # = 3
+r = 4, k = 6, thread # = 3
+r = 4, k = 7, thread # = 3
+r = 4, k = 8, thread # = 3
+r = 4, k = 9, thread # = 3
+r = 4, k = 10, thread # = 3
+r = 2, k = 1, thread # = 1
+r = 2, k = 2, thread # = 1
+r = 2, k = 3, thread # = 1
+r = 2, k = 4, thread # = 1
+r = 2, k = 5, thread # = 1
+r = 2, k = 6, thread # = 1
+r = 2, k = 7, thread # = 1
+r = 2, k = 8, thread # = 1
+r = 2, k = 9, thread # = 1
+r = 2, k = 10, thread # = 1
+r = 5, k = 6, thread # = 4
+r = 5, k = 7, thread # = 4
+r = 5, k = 8, thread # = 4
+r = 5, k = 9, thread # = 4
+r = 5, k = 10, thread # = 4
+mithejamanoharie@192 Exercise04 % 
+
+
+
+
+//2
+mithejamanoharie@192 Exercise04 % ./ex4
+r = 5, k = 1, thread # = 8
+r = 5, k = 2, thread # = 8
+r = 5, k = 3, thread # = 8
+r = 4, k = 6, thread # = 7
+r = 4, k = 7, thread # = 7
+r = 1, k = 6, thread # = 1
+r = 1, k = 7, thread # = 1
+r = 1, k = 8, thread # = 1
+r = 2, k = 1, thread # = 2
+r = 4, k = 1, thread # = 6
+r = 4, k = 2, thread # = 6
+r = 4, k = 3, thread # = 6
+r = 5, k = 4, thread # = 8
+r = 5, k = 5, thread # = 8
+r = 4, k = 8, thread # = 7
+r = 4, k = 9, thread # = 7
+r = 3, k = 1, thread # = 4
+r = 3, k = 2, thread # = 4
+r = 3, k = 3, thread # = 4
+r = 3, k = 4, thread # = 4
+r = 3, k = 5, thread # = 4
+r = 4, k = 4, thread # = 6
+r = 4, k = 5, thread # = 6
+r = 5, k = 6, thread # = 9
+r = 5, k = 7, thread # = 9
+r = 5, k = 8, thread # = 9
+r = 5, k = 9, thread # = 9
+r = 5, k = 10, thread # = 9
+r = 3, k = 6, thread # = 5
+r = 3, k = 7, thread # = 5
+r = 3, k = 8, thread # = 5
+r = 3, k = 9, thread # = 5
+r = 3, k = 10, thread # = 5
+r = 1, k = 1, thread # = 0
+r = 1, k = 2, thread # = 0
+r = 1, k = 3, thread # = 0
+r = 1, k = 4, thread # = 0
+r = 1, k = 5, thread # = 0
+r = 2, k = 6, thread # = 3
+r = 2, k = 7, thread # = 3
+r = 1, k = 9, thread # = 1
+r = 1, k = 10, thread # = 1
+r = 4, k = 10, thread # = 7
+r = 2, k = 8, thread # = 3
+r = 2, k = 9, thread # = 3
+r = 2, k = 10, thread # = 3
+r = 2, k = 2, thread # = 2
+r = 2, k = 3, thread # = 2
+r = 2, k = 4, thread # = 2
+r = 2, k = 5, thread # = 2
+
+//Without collapse, only the outer loop is parallelised, giving 5 units of work. 
+With 10 threads available, 5 threads receive one row each and the remaining 5 are idle; each working thread executes its inner k loop serially.
+
+//With collapse(2), the perfectly nested loops are merged into a single iteration space of 5 × 10 = 50, which is then distributed across the team. 
+All 10 threads receive 5 iterations each, and a single value of r may be handled by more than one thread. 
+This increases parallelism and improves load balance where the outer loop count is smaller than the thread count.
